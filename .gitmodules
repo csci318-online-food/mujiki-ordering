@@ -1,0 +1,12 @@
+[submodule "address-service"]
+	path = address-service
+	url = https://github.com/csci318-online-food/mujiki-ordering-address-service
+[submodule "user-service"]
+	path = user-service
+	url = https://github.com/csci318-online-food/mujiki-ordering-user-service
+[submodule "restaurant-service"]
+	path = restaurant-service
+	url = https://github.com/csci318-online-food/mujiki-ordering-restaurant-service
+[submodule "authentication-service"]
+	path = authentication-service
+	url = https://github.com/csci318-online-food/mujiki-ordering-authentication-service
