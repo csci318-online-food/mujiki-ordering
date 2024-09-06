@@ -10,3 +10,15 @@
 [submodule "authentication-service"]
 	path = authentication-service
 	url = https://github.com/csci318-online-food/mujiki-ordering-authentication-service
+[submodule "cart-service"]
+	path = cart-service
+	url = https://github.com/csci318-online-food/mujiki-ordering-cart-service
+[submodule "feedback-service"]
+	path = feedback-service
+	url = https://github.com/csci318-online-food/mujiki-ordering-feedback-service
+[submodule "item-service"]
+	path = item-service
+	url = https://github.com/csci318-online-food/mujiki-ordering-item-service
+[submodule "payment-service"]
+	path = payment-service
+	url = https://github.com/csci318-online-food/mujiki-ordering-payment-service
