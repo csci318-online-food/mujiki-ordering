@@ -11,3 +11,13 @@ Make sure you pass the `--recursive` flag when cloning this repo to include all 
 ```sh
 git clone --recursive https://github.com/csci318-online-food/mujiki-ordering
 ```
+
+### Running
+
+Use the `run.sh` script, which recursively runs each submodule:
+
+```sh
+./run.sh
+```
+
+Currently, root access is required for binding into ports in the 8x range.
