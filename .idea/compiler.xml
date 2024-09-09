@@ -12,6 +12,7 @@
         <module name="address" />
         <module name="restaurant" />
         <module name="payment" />
+        <module name="order-service" />
         <module name="user" />
         <module name="cart" />
         <module name="authentication" />
@@ -25,6 +26,7 @@
       <module name="cart" options="-parameters" />
       <module name="feedback" options="-parameters" />
       <module name="item" options="-parameters" />
+      <module name="order-service" options="-parameters" />
       <module name="payment" options="-parameters" />
       <module name="restaurant" options="-parameters" />
       <module name="user" options="-parameters" />
