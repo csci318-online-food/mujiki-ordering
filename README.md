@@ -78,6 +78,8 @@ The application should occupy HTTP ports `8080` - `8088`.
 These are cURL commands runnable from the terminal to test the application's functionality.
 
 Since UUIDs are randomly generated on each run, they will not match the sample requests shown below.
+When testing, please **take note of the returned objects' UUIDs** (the `id` field) and substitute
+those into subsequent requests.
 
 A [Postman](https://www.postman.com/trungnt2910/mujiki/collection/pff869u/mujiki) collection
 is also available. With support for automatic UUID extraction into environment variables, the tool
