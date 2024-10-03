@@ -15,8 +15,9 @@ project.
 
 Make sure you pass the `--recursive` flag when cloning this repo to include all submodules.
 
-```sh
+```sh {"id":"01J98D2YSB41RXZYTZATC99TEW"}
 git clone --recursive https://github.com/csci318-online-food/mujiki-ordering
+
 ```
 
 ### Building
@@ -24,18 +25,20 @@ git clone --recursive https://github.com/csci318-online-food/mujiki-ordering
 For each microservice, the bundled Maven Wrapper (`mvnw`) needs to be invoked in order to install
 dependencies and build the application.
 
-```sh
+```sh {"id":"01J98D2YSB41RXZYTZAV0AQ38N"}
 cd $name-service
 ./mvnw install
 cd ..
+
 ```
 
 Or, on Windows:
 
-```cmd
+```cmd {"id":"01J98D2YSB41RXZYTZAYD9YQW9"}
 cd %name%-service
 mvnw.cmd install
 cd ..
+
 ```
 
 (Replace `$name` or `%name%` with the name of each microservice).
@@ -45,30 +48,34 @@ cd ..
 Similarly, the `spring-boot:run` operation needs to be invoked for each microservice to run the
 system.
 
-```sh
+```sh {"id":"01J98D2YSB41RXZYTZB14T3BSQ"}
 cd $name-service
 ./mvnw spring-boot:run
 cd ..
+
 ```
 
 Or, on Windows:
 
-```cmd
+```cmd {"id":"01J98D2YSCTGETY5A1WF2Z495W"}
 cd %name%-service
 mvnw.cmd spring-boot:run
 cd ..
+
 ```
 
 Alternatively, building and running can be done in one command using the provided run scripts.
 
-```sh
+```sh {"id":"01J98D2YSCTGETY5A1WF3JDPNB"}
 ./run.sh
+
 ```
 
 Or, on Windows:
 
-```cmd
+```cmd {"id":"01J98D2YSCTGETY5A1WFYX1VCS"}
 run.cmd
+
 ```
 
 The application should occupy HTTP ports `8080` - `8088`.
@@ -92,7 +99,7 @@ Please refer to the report for a detailed explanation of each request parameter.
 
 ### Use Case 1 - Create User
 
-```sh
+```sh {"id":"01J98D2YSCTGETY5A1WH9MXTSY"}
 curl -L 'http://localhost:8080/api/auth/user/signup' \
 -H 'Content-Type: application/json' \
 --data-raw '{
@@ -104,11 +111,12 @@ curl -L 'http://localhost:8080/api/auth/user/signup' \
   "phone": "12345627890"
 }
 '
+
 ```
 
 Or, on Windows:
 
-```cmd
+```cmd {"id":"01J98D2YSCTGETY5A1WM164M3P"}
 curl -L "http://localhost:8080/api/auth/user/signup" ^
 -H "Content-Type: application/json" ^
 --data-raw ^
@@ -121,23 +129,26 @@ curl -L "http://localhost:8080/api/auth/user/signup" ^
   \"phone\": \"12345627890\"^
 }^
 "
+
 ```
 
 #### Use Case 1.1 - View Users
 
-```sh
+```sh {"id":"01J98D2YSCTGETY5A1WN4QPDVZ"}
 curl -L "http://localhost:8081/api/user"
+
 ```
 
 #### Use Case 1.2 - Find User by Username
 
-```sh
+```sh {"id":"01J98D2YSCTGETY5A1WNTZ6AJE"}
 curl -L "http://localhost:8081/api/user/nhi0412"
+
 ```
 
 ### Use Case 2 - Create Restaurant
 
-```sh
+```sh {"id":"01J98D2YSCTGETY5A1WQA4DDFS"}
 curl -L 'http://localhost:8080/api/auth/restaurant/signup' \
 -H 'Content-Type: application/json' \
 --data-raw '{
@@ -154,11 +165,12 @@ curl -L 'http://localhost:8080/api/auth/restaurant/signup' \
   "description": "Authentic Thai cuisine"
 }
 '
+
 ```
 
 Or, on Windows:
 
-```cmd
+```cmd {"id":"01J98D2YSCTGETY5A1WV6J4S7R"}
 curl -L "http://localhost:8080/api/auth/restaurant/signup" ^
 -H "Content-Type: application/json" ^
 --data-raw ^
@@ -176,17 +188,19 @@ curl -L "http://localhost:8080/api/auth/restaurant/signup" ^
   \"description\": \"Authentic Thai cuisine\"^
 }^
 "
+
 ```
 
 #### Use Case 2.1 - View Restaurants
 
-```sh
+```sh {"id":"01J98D2YSCTGETY5A1WW479Z3Q"}
 curl -L "http://localhost:8082/api/restaurant"
+
 ```
 
 #### Use Case 2.2 - Update Restaurant
 
-```sh
+```sh {"id":"01J98D2YSCTGETY5A1WYGHD5PY"}
 curl -L -X PUT 'http://localhost:8082/api/restaurant/1d2f4e73-47c6-4aeb-92ae-4d0fbdb6b433' \
 -H 'Content-Type: application/json' \
 --data-raw '{
@@ -203,12 +217,13 @@ curl -L -X PUT 'http://localhost:8082/api/restaurant/1d2f4e73-47c6-4aeb-92ae-4d0
   "description": "Authentic Thai cuisine"
 }
 '
+
 ```
 
 Or, on Windows:
 
-```cmd
-curl -L -X PUT "http://localhost:8082/api/restaurant/1d2f4e73-47c6-4aeb-92ae-4d0fbdb6b433" ^
+```cmd {"id":"01J98D2YSCTGETY5A1X26FHDQF"}
+curl -L -X PUT "http://localhost:8082/api/restaurant/1f2faad0-5735-47a5-a0df-b11fde4a2395" ^
 -H "Content-Type: application/json" ^
 --data-raw ^
 "{^
@@ -225,11 +240,12 @@ curl -L -X PUT "http://localhost:8082/api/restaurant/1d2f4e73-47c6-4aeb-92ae-4d0
   \"description\": \"Authentic Thai cuisine\"^
 }^
 "
+
 ```
 
 ### Use Case 3 - Create Address for User
 
-```sh
+```sh {"id":"01J98D2YSCTGETY5A1X5SRFWTD"}
 curl -L 'http://localhost:8086/api/address/forUser/93242ebf-52dc-4f6a-8e52-7f31f1ad089e' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -240,11 +256,12 @@ curl -L 'http://localhost:8086/api/address/forUser/93242ebf-52dc-4f6a-8e52-7f31f
   "country": "Australia"
 }
 '
+
 ```
 
 Or, on Windows:
 
-```cmd
+```cmd {"id":"01J98D2YSCTGETY5A1X9FR1AQJ"}
 curl -L "http://localhost:8086/api/address/forUser/93242ebf-52dc-4f6a-8e52-7f31f1ad089e" ^
 -H "Content-Type: application/json" ^
 -d ^
@@ -256,17 +273,19 @@ curl -L "http://localhost:8086/api/address/forUser/93242ebf-52dc-4f6a-8e52-7f31f
   \"country\": \"Australia\"^
 }^
 "
+
 ```
 
 #### Use Case 3.1 - Find Address for User
 
-```sh
+```sh {"id":"01J98D2YSCTGETY5A1XBVWG1XH"}
 curl -L "http://localhost:8086/api/address/forUser/93242ebf-52dc-4f6a-8e52-7f31f1ad089e"
+
 ```
 
 ### Use Case 4 - Create Address for Restaurant
 
-```sh
+```sh {"id":"01J98D2YSCTGETY5A1XBZTMQSP"}
 curl -L 'http://localhost:8086/api/address/forRestaurant/1d2f4e73-47c6-4aeb-92ae-4d0fbdb6b433' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -277,11 +296,12 @@ curl -L 'http://localhost:8086/api/address/forRestaurant/1d2f4e73-47c6-4aeb-92ae
   "country": "Australia"
 }
 '
+
 ```
 
 Or, on Windows:
 
-```cmd
+```cmd {"id":"01J98D2YSCTGETY5A1XCPGZQNE"}
 curl -L "http://localhost:8086/api/address/forRestaurant/1d2f4e73-47c6-4aeb-92ae-4d0fbdb6b433" ^
 -H "Content-Type: application/json" ^
 -d ^
@@ -293,23 +313,26 @@ curl -L "http://localhost:8086/api/address/forRestaurant/1d2f4e73-47c6-4aeb-92ae
   \"country\": \"Australia\"^
 }^
 "
+
 ```
 
 #### Use Case 4.1 - Find Address for Restaurant
 
-```sh
+```sh {"id":"01J98D2YSCTGETY5A1XDWFTF2J"}
 curl -L "http://localhost:8086/api/address/forRestaurant/1d2f4e73-47c6-4aeb-92ae-4d0fbdb6b433"
+
 ```
 
 ### Use Case 5 - Search for Restaurants
 
-```sh
+```sh {"id":"01J98D2YSCTGETY5A1XFD6DKPV"}
 curl -L "http://localhost:8082/api/restaurant/search?cuisine=THAI&postcode=2500"
+
 ```
 
 ### Use Case 6 - Create Restaurant Items
 
-```sh
+```sh {"id":"01J98D2YSCTGETY5A1XK3CKZ07"}
 curl -L 'http://localhost:8085/api/items/create?restaurantId=1d2f4e73-47c6-4aeb-92ae-4d0fbdb6b433' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -319,11 +342,12 @@ curl -L 'http://localhost:8085/api/items/create?restaurantId=1d2f4e73-47c6-4aeb-
   "availability": true
 }
 '
+
 ```
 
 Or, on Windows:
 
-```cmd
+```cmd {"id":"01J98D2YSD54K8AZ8XJW66Q9XH"}
 curl -L "http://localhost:8085/api/items/create?restaurantId=1d2f4e73-47c6-4aeb-92ae-4d0fbdb6b433" ^
 -H "Content-Type: application/json" ^
 -d ^
@@ -334,11 +358,12 @@ curl -L "http://localhost:8085/api/items/create?restaurantId=1d2f4e73-47c6-4aeb-
   \"availability\": true^
 }^
 "
+
 ```
 
 ### Use Case 7 - Create Feedback for Restaurant
 
-```sh
+```sh {"id":"01J98D2YSECFE4BZ9PSC19Q3E5"}
 curl -L 'http://localhost:8084/api/feedback/create' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -348,11 +373,12 @@ curl -L 'http://localhost:8084/api/feedback/create' \
   "comments": "This is good"
 }
 '
+
 ```
 
 Or, on Windows:
 
-```cmd
+```cmd {"id":"01J98D2YSECFE4BZ9PSDHPPHQW"}
 curl -L "http://localhost:8084/api/feedback/create" ^
 -H "Content-Type: application/json" ^
 -d ^
@@ -363,11 +389,12 @@ curl -L "http://localhost:8084/api/feedback/create" ^
   \"comments\": \"This is good\"^
 }^
 "
+
 ```
 
 ### Use Case 8 - Add Payment Method
 
-```sh
+```sh {"id":"01J98D2YSECFE4BZ9PSH26Z0F7"}
 curl -L 'http://localhost:8087/api/payment' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -376,11 +403,12 @@ curl -L 'http://localhost:8087/api/payment' \
   "cardNumber" : "42424-2424-2424-2424"
 }
 '
+
 ```
 
 Or, on Windows:
 
-```
+```sh {"id":"01J98D2YSECFE4BZ9PSMC6X6FF"}
 curl -L "http://localhost:8087/api/payment" ^
 -H "Content-Type: application/json" ^
 -d ^
@@ -390,12 +418,14 @@ curl -L "http://localhost:8087/api/payment" ^
   \"cardNumber\" : \"42424-2424-2424-2424\"^
 }^
 "
+
 ```
 
 #### Use Case 8.1 - View Payment Methods
 
-```sh
+```sh {"id":"01J98D2YSECFE4BZ9PSQ1GWTBQ"}
 curl -L "http://localhost:8087/api/payment/user/93242ebf-52dc-4f6a-8e52-7f31f1ad089e"
+
 ```
 
 ### Use Case 9 - Add Item to Cart
@@ -404,18 +434,19 @@ This use case requires the following to be run first to get a `cartId`.
 
 #### Use Case 9.0 - Create Cart for User
 
-```sh
+```sh {"id":"01J98D2YSECFE4BZ9PSRE1E8XW"}
 curl -L 'http://localhost:8083/api/cart' \
 -H 'Content-Type: application/json' \
 -d '{
     "userId": "93242ebf-52dc-4f6a-8e52-7f31f1ad089e"
 }
 '
+
 ```
 
 Or, on Windows:
 
-```cmd
+```cmd {"id":"01J98D2YSECFE4BZ9PST66RZKS"}
 curl -L "http://localhost:8083/api/cart" ^
 -H "Content-Type: application/json" ^
 -d ^
@@ -423,22 +454,24 @@ curl -L "http://localhost:8083/api/cart" ^
     \"userId\": \"93242ebf-52dc-4f6a-8e52-7f31f1ad089e\"^
 }^
 "
+
 ```
 
 #### Use Case 9
 
-```sh
+```sh {"id":"01J98D2YSECFE4BZ9PSX9P4Y77"}
 curl -L 'http://localhost:8083/api/cart/a0e8878d-1d29-443c-a99d-6222eff82f45/items' \
 -H 'Content-Type: application/json' \
 -d '{
     "restaurantId": "a0e8878d-1d29-443c-a99d-6222eff82f45",
     "itemId" : "a65ce87e-966d-41cf-b665-f7058e0540ef"
 }'
+
 ```
 
 Or, on Windows:
 
-```cmd
+```cmd {"id":"01J98D2YSECFE4BZ9PT1264JW1"}
 curl -L "http://localhost:8083/api/cart/a0e8878d-1d29-443c-a99d-6222eff82f45/items" ^
 -H "Content-Type: application/json" ^
 -d ^
@@ -446,10 +479,12 @@ curl -L "http://localhost:8083/api/cart/a0e8878d-1d29-443c-a99d-6222eff82f45/ite
     \"restaurantId\": \"a0e8878d-1d29-443c-a99d-6222eff82f45\",^
     \"itemId\" : \"a65ce87e-966d-41cf-b665-f7058e0540ef\"^
 }"
+
 ```
 
 ### Use Case 10 - Pay for Cart
 
-```sh
+```sh {"id":"01J98D2YSECFE4BZ9PT2HAJK1G"}
 curl -L -X POST "http://localhost:8083/api/cart/process-order/a0e8878d-1d29-443c-a99d-6222eff82f45?paymentId=fd039734-6b27-409d-b0aa-1de2d1bf59c2"
+
 ```
