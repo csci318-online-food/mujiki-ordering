@@ -22,3 +22,6 @@
 [submodule "order-service"]
 	path = order-service
 	url = https://github.com/csci318-online-food/mujiki-ordering-order-service
+[submodule "analytics-service"]
+	path = analytics-service
+	url = https://github.com/csci318-online-food/mujiki-ordering-analytics-service
