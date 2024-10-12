@@ -40,6 +40,22 @@ cd ..
 
 (Replace `$name` or `%name%` with the name of each microservice).
 
+### Apache Kafka
+
+Before running this project, Kafka needs to be installed and running. The project includes a helper
+script, `kafka_run`, to download a configured version of Apache Kafka then run Zookeeper and Kafka
+servers in the background.
+
+```sh
+./kafka_run.sh
+```
+
+Or, on Windows:
+
+```sh
+kafka_run.cmd
+```
+
 ### Running
 
 Similarly, the `spring-boot:run` operation needs to be invoked for each microservice to run the
