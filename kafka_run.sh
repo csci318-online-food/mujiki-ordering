@@ -22,7 +22,12 @@ cleanup() {
     echo "Stopping Kafka..."
     ./.kafka/bin/zookeeper-server-stop.sh   &
     ./.kafka/bin/kafka-server-stop.sh       &
+
     wait
+
+    rm -rf /tmp/zookeeper
+    rm -rf /tmp/kafka-logs
+    rm -rf /tmp/kafka-streams
 }
 
 # Trap the INT signal (Ctrl+C) and call the cleanup function
