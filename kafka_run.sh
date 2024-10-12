@@ -19,7 +19,9 @@ PID_KAFKA=$!
 
 cleanup() {
     echo "Stopping Kafka..."
-    kill SIGINT $PID_ZOOKEEPER $PID_KAFKA
+    ./.kafka/bin/zookeeper-server-stop.sh   &
+    ./.kafka/bin/kafka-server-stop.sh       &
+    wait
 }
 
 # Trap the INT signal (Ctrl+C) and call the cleanup function
