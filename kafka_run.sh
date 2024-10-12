@@ -10,6 +10,7 @@ fi
 
 rm -rf /tmp/zookeeper
 rm -rf /tmp/kafka-logs
+rm -rf /tmp/kafka-streams
 
 ./.kafka/bin/zookeeper-server-start.sh ./.kafka/config/zookeeper.properties &
 PID_ZOOKEEPER=$!
