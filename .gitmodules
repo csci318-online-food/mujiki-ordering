@@ -25,3 +25,6 @@
 [submodule "analytics-service"]
 	path = analytics-service
 	url = https://github.com/csci318-online-food/mujiki-ordering-analytics-service
+[submodule "demo-client"]
+	path = demo-client
+	url = https://github.com/csci318-online-food/mujiki-ordering-demo-client
