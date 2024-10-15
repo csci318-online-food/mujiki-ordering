@@ -87,7 +87,7 @@ Or, on Windows:
 run.cmd
 ```
 
-The application should occupy HTTP ports `8080` - `8088`.
+The application should occupy HTTP ports `8080` - `8089`.
 
 ## Sample REST Requests
 
@@ -97,9 +97,12 @@ Since UUIDs are randomly generated on each run, they will not match the sample r
 When testing, please **take note of the returned objects' UUIDs** (the `id` field) and substitute
 those into subsequent requests.
 
-A [Postman](https://www.postman.com/trungnt2910/mujiki/collection/pff869u/mujiki) collection
+A [Postman](https://www.postman.com/trungnt2910/mujiki/collection/76dgdtj/mujiki-part-c) collection
 is also available. With support for automatic UUID extraction into environment variables, the tool
 can make testing much more convenient.
+
+Alternatively, the [Demo Client](demo-client/README.md#use-case-demonstration-mode) can be used to
+test the system's use cases.
 
 When evaluating the application, it is recommended to run the commands in the order they are
 presented.
@@ -326,7 +329,7 @@ curl -L "http://localhost:8082/api/restaurant/search?cuisine=THAI&postcode=2500"
 ### Use Case 6 - Create Restaurant Items
 
 ```sh
-curl -L 'http://localhost:8085/api/items/create?restaurantId=1d2f4e73-47c6-4aeb-92ae-4d0fbdb6b433' \
+curl -L 'http://localhost:8082/api/item/create?restaurantId=1d2f4e73-47c6-4aeb-92ae-4d0fbdb6b433' \
 -H 'Content-Type: application/json' \
 -d '{
   "name": "Fried Chicken with Mushroom Sauce",
@@ -340,7 +343,7 @@ curl -L 'http://localhost:8085/api/items/create?restaurantId=1d2f4e73-47c6-4aeb-
 Or, on Windows:
 
 ```cmd
-curl -L "http://localhost:8085/api/items/create?restaurantId=1d2f4e73-47c6-4aeb-92ae-4d0fbdb6b433" ^
+curl -L "http://localhost:8082/api/item/create?restaurantId=1d2f4e73-47c6-4aeb-92ae-4d0fbdb6b433" ^
 -H "Content-Type: application/json" ^
 -d ^
 "{^
@@ -352,7 +355,54 @@ curl -L "http://localhost:8085/api/items/create?restaurantId=1d2f4e73-47c6-4aeb-
 "
 ```
 
-### Use Case 7 - Create Feedback for Restaurant
+### Use Case 7 - Create Promotion
+
+```sh
+curl -L 'http://localhost:8082/api/promotion/create' \
+-H 'Content-Type: application/json' \
+-d '{
+    "restaurantId": "1d2f4e73-47c6-4aeb-92ae-4d0fbdb6b433",
+    "code": "SUMMER",
+    "description": "Summer Sale",
+    "percentage": 20,
+    "expiryDate": "2025-01-01T00:00:00",
+    "active": true,
+    "stock": 420
+}
+'
+```
+
+Or, on Windows:
+
+```cmd
+curl -L "http://localhost:8082/api/promotion/create" ^
+-H "Content-Type: application/json" ^
+-d ^
+"{^
+    \"restaurantId\": \"1d2f4e73-47c6-4aeb-92ae-4d0fbdb6b433\",^
+    \"code\": \"SUMMER\",^
+    \"description\": \"Summer Sale\",^
+    \"percentage\": 20,^
+    \"expiryDate\": \"2025-01-01T00:00:00\",^
+    \"active\": true,^
+    \"stock\": 420^
+}^
+"
+```
+
+#### Use Case 7.1 - Get Promotion
+
+```sh
+curl -L "http://localhost:8082/api/promotion/a369f23d-b951-40d6-a40d-e5c742957c78"
+```
+
+#### Use Case 7.2 - Get Promotions by Restaurant
+
+```sh
+curl -L "http://localhost:8082/api/promotion/restaurant/1d2f4e73-47c6-4aeb-92ae-4d0fbdb6b433"
+```
+
+### Use Case 8 - Create Feedback for Restaurant
 
 ```sh
 curl -L 'http://localhost:8084/api/feedback/create' \
@@ -381,7 +431,7 @@ curl -L "http://localhost:8084/api/feedback/create" ^
 "
 ```
 
-### Use Case 8 - Add Payment Method
+### Use Case 9 - Add Payment Method
 
 ```sh
 curl -L 'http://localhost:8087/api/payment' \
@@ -408,17 +458,17 @@ curl -L "http://localhost:8087/api/payment" ^
 "
 ```
 
-#### Use Case 8.1 - View Payment Methods
+#### Use Case 9.1 - View Payment Methods
 
 ```sh
 curl -L "http://localhost:8087/api/payment/user/93242ebf-52dc-4f6a-8e52-7f31f1ad089e"
 ```
 
-### Use Case 9 - Add Item to Cart
+### Use Case 10 - Add Item to Cart
 
 This use case requires the following to be run first to get a `cartId`.
 
-#### Use Case 9.0 - Create Cart for User
+#### Use Case 10.0 - Create Cart for User
 
 ```sh
 curl -L 'http://localhost:8083/api/cart' \
@@ -441,7 +491,7 @@ curl -L "http://localhost:8083/api/cart" ^
 "
 ```
 
-#### Use Case 9
+#### Use Case 10
 
 ```sh
 curl -L 'http://localhost:8083/api/cart/a0e8878d-1d29-443c-a99d-6222eff82f45/items' \
@@ -464,8 +514,62 @@ curl -L "http://localhost:8083/api/cart/a0e8878d-1d29-443c-a99d-6222eff82f45/ite
 }"
 ```
 
-### Use Case 10 - Pay for Cart
+### Use Case 11 - Pay for Cart
 
 ```sh
-curl -L -X POST "http://localhost:8083/api/cart/process-order/a0e8878d-1d29-443c-a99d-6222eff82f45?paymentId=fd039734-6b27-409d-b0aa-1de2d1bf59c2"
+curl -L -X POST "http://localhost:8083/api/cart/process-order/a0e8878d-1d29-443c-a99d-6222eff82f45?paymentId=fd039734-6b27-409d-b0aa-1de2d1bf59c2&promotionId=a369f23d-b951-40d6-a40d-e5c742957c78"
+```
+
+### Use Case 12 - Update Order Status
+
+```sh
+curl -L -X POST "http://localhost:8088/api/order/4fe1f583-cd74-4ea8-a001-47ab9a82f672/status?orderStatus=COMPLETED"
+```
+
+### Use Case 13 - Get Loyalty Status
+
+This use case requires the following to be run first to get a `loyaltyId`.
+Ideally this should be run before [Use Case 11](#use-case-11---pay-for-cart), before the user has
+created an order. If the order has already been completed, it is still possible to re-run use cases
+10 through 12.
+
+#### Use Case 13.0 - Enroll in Loyalty Program
+
+```sh
+curl -L 'http://localhost:8081/api/loyalty/enroll' \
+-H 'Content-Type: application/json' \
+-d '{
+    "userId": "93242ebf-52dc-4f6a-8e52-7f31f1ad089e"
+}
+'
+```
+
+Or, on Windows:
+
+```cmd
+curl -L "http://localhost:8081/api/loyalty/enroll" ^
+-H "Content-Type: application/json" ^
+-d ^
+"{^
+    \"userId\": \"93242ebf-52dc-4f6a-8e52-7f31f1ad089e\"^
+}^
+"
+```
+
+#### Use Case 13
+
+```sh
+curl -L "http://localhost:8081/api/loyalty/6a3941ed-61b1-451a-8406-10181df378f1"
+```
+
+### Use Case 14 - Get Restaurant Counts by Ratings
+
+```sh
+curl -L "http://localhost:8089/api/analytics/ratings"
+```
+
+### Use Case 15 - Get Order Statuses by Restaurants
+
+```sh
+curl -L "http://localhost:8089/api/analytics/orders"
 ```
